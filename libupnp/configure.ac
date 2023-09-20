@@ -8,8 +8,8 @@
 # (C) Copyright 2005 Rémi Turboult <r3mi@users.sourceforge.net>
 #
 
-AC_PREREQ(2.59)
-AC_INIT(libupnp,1.2.1a-rt2, r3mi@users.sourceforge.net)
+AC_PREREQ([2.71])
+AC_INIT([libupnp,1.2.1a-rt2], [r3mi@users.sourceforge.net])
 
 AC_CONFIG_AUX_DIR(config.aux)
 AC_CONFIG_MACRO_DIR(m4)
@@ -58,10 +58,10 @@ RT_BOOL_ARG_ENABLE([tools], [yes], [helper APIs in upnptools.h])
 #
 AC_PROG_CC
 AM_PROG_CC_C_O
-AC_PROG_LIBTOOL
+AM_PROG_AR
+LT_INIT()
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
-
 
 #
 # Default compilation flags
@@ -83,7 +83,6 @@ AC_SYS_LARGEFILE
 #
 # Checks for header files
 #
-AC_HEADER_STDC
 # libupnp code doesn't use autoconf variables yet,
 # so just abort if a header file is not found.
 AC_CHECK_HEADERS([arpa/inet.h fcntl.h limits.h malloc.h netdb.h netinet/in.h stdlib.h string.h sys/ioctl.h sys/socket.h sys/time.h sys/timeb.h syslog.h unistd.h],[],[AC_MSG_ERROR([required header file missing])])

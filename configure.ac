@@ -8,14 +8,12 @@
 # (C) Copyright 2005 Rémi Turboult <r3mi@users.sourceforge.net>
 #
 
-AC_PREREQ(2.59)
-AC_INIT(djmount, 0.71, r3mi@users.sourceforge.net)
+AC_PREREQ([2.71])
+AC_INIT([djmount], [0.71], [r3mi@users.sourceforge.net])
 
 # share auxiliary files with sub-configure in "libupnp"
 AC_CONFIG_AUX_DIR(libupnp/config.aux)
-AC_CONFIG_MACRO_DIR(libupnp/m4)
-AC_CONFIG_MACRO_DIR(m4)
-AC_CONFIG_MACRO_DIR(gl/m4)
+AC_CONFIG_MACRO_DIRS([libupnp/m4], [m4], [gl/m4])
 
 AC_CONFIG_SRCDIR(djmount/djfs.c)
 
@@ -54,8 +52,7 @@ AC_PROG_CC
 gl_EARLY
 
 # build static libraries by default (for bundled libupnp and talloc)
-AC_DISABLE_SHARED
-AC_PROG_LIBTOOL
+LT_INIT([disable-shared])
 
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
@@ -90,7 +87,6 @@ AC_SYS_LARGEFILE
 # Checks for header files
 #
 AC_HEADER_DIRENT
-AC_HEADER_STDC
 AC_CHECK_HEADERS([inttypes.h stddef.h stdint.h stdarg.h])
 if test x"$enable_charset" = xyes; then
 	AC_CHECK_HEADERS([locale.h langinfo.h])
