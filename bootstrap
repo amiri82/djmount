@@ -1,0 +1,28 @@
+#!/bin/sh
+
+rm -fr autom4te.cache
+
+# reconstruct gnulib files, if gnulib-tool is available
+(type -f gnulib-tool) > /dev/null 2>&1 && gnulib-tool --import
+
+# Equivalent to 
+#	aclocal 
+#	autoheader 
+#	automake --add-missing --copy
+#	autoconf
+
+# autoreconf will error out if this path is missing
+[ -f config.aux/config.rpath ] || {
+   mkdir -p config.aux
+   touch config.aux/config.rpath
+}
+
+autoreconf --force --install -Wall -Wno-obsolete $* || exit 1
+
+echo "Now run ./configure and then make."
+exit 0
+
+
+
+
+

@@ -12,7 +12,7 @@ AC_PREREQ([2.71])
 AC_INIT([libupnp,1.2.1a-rt2], [r3mi@users.sourceforge.net])
 
 AC_CONFIG_AUX_DIR(config.aux)
-AC_CONFIG_MACRO_DIR(m4)
+AC_CONFIG_MACRO_DIRS([m4])
 AC_CONFIG_SRCDIR(upnp/inc/upnp.h)
 
 AM_INIT_AUTOMAKE([1.9 -Wall foreign subdir-objects])

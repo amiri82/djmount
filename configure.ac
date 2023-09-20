@@ -13,11 +13,11 @@ AC_INIT([djmount], [0.71], [r3mi@users.sourceforge.net])
 
 # share auxiliary files with sub-configure in "libupnp"
 AC_CONFIG_AUX_DIR(libupnp/config.aux)
-AC_CONFIG_MACRO_DIRS([libupnp/m4], [m4], [gl/m4])
+AC_CONFIG_MACRO_DIRS([m4],[gl/m4],[libupnp/m4])
 
 AC_CONFIG_SRCDIR(djmount/djfs.c)
 
-AM_INIT_AUTOMAKE([1.9 -Wall std-options gnu])
+AM_INIT_AUTOMAKE([1.9 -Wall std-options gnu subdir-objects])
 
 AC_CONFIG_HEADERS(config.h)
 
@@ -32,7 +32,7 @@ AC_REVISION([$Revision: 266 $])
 
 RT_BOOL_ARG_ENABLE([debug], [yes], [extra debugging code])
 if test x"$enable_debug" = xyes; then
-	AC_DEFINE([DEBUG],1,[Define to 1 to compile debug code])
+	AC_DEFINE([DEBUG],[1],[Define to 1 to compile debug code])
 fi
 
 
@@ -52,6 +52,7 @@ AC_PROG_CC
 gl_EARLY
 
 # build static libraries by default (for bundled libupnp and talloc)
+AM_PROG_AR
 LT_INIT([disable-shared])
 
 AC_PROG_INSTALL

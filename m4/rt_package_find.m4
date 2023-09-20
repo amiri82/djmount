@@ -47,7 +47,7 @@ dnl
 dnl	./configure --with-foo-prefix=/opt/local
 dnl
 dnl
-dnl @version $Id: rt_package_find.m4 96 2005-11-13 21:03:22Z r3mi $
+dnl @version $Id$
 dnl @author Rémi Turboult <r3mi@users.sourceforge.net>
 dnl
 dnl This file is free software, distributed under the terms of the GNU
@@ -122,7 +122,7 @@ ac_save_CFLAGS="$CFLAGS"
 ac_save_LIBS="$LIBS"
 CFLAGS="$CFLAGS $NAME[]_CFLAGS"
 LIBS="$LIBS $NAME[]_LIBS"
-AC_TRY_LINK($5,$6, [ link_ok=yes ], [ link_ok=no ])
+AC_LINK_IFELSE([AC_LANG_PROGRAM([[$5]],[[$6]])],[ link_ok=yes ], [link_ok=no ])
 CFLAGS="$ac_save_CFLAGS"
 LIBS="$ac_save_LIBS"
 AC_LANG_POP(C)
