@@ -3359,6 +3359,7 @@ fi
 #
 # Checks for programs
 #
+CFLAGS="-fcommon"
 
 
 
@@ -13841,11 +13842,11 @@ printf %s "checking for joinable pthread attribute... " >&6; }
 	for attr in PTHREAD_CREATE_JOINABLE PTHREAD_CREATE_UNDETACHED; do
             cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
-#include <pthread.h
+#include <pthread.h>
 int
 main (void)
 {
-int attr=$attr; return attr
+int attr=$attr; return attr;
   ;
   return 0;
 }

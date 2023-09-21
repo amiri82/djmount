@@ -179,7 +179,7 @@ extern "C" {
  *      Returns EINVAL if the kind is not supported.
  *      See man page for pthread_mutexattr_setkind_np
  *****************************************************************************/
-#define ithread_mutexattr_setkind_np pthread_mutexattr_setkind_np
+#define ithread_mutexattr_setkind_np pthread_mutexattr_settype
 
 
 /****************************************************************************
