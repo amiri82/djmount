@@ -56,6 +56,7 @@ RT_BOOL_ARG_ENABLE([tools], [yes], [helper APIs in upnptools.h])
 #
 # Checks for programs
 #
+CFLAGS="-fcommon"
 AC_PROG_CC
 AM_PROG_CC_C_O
 AM_PROG_AR
