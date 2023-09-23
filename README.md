@@ -1,6 +1,5 @@
 
 # **djmount**
-=======
 
 djmount - mount MediaServers content as a Linux filesystem.
 Created 23/04/2005, Rémi Turboult <r3mi@users.sourceforge.net>
@@ -21,8 +20,7 @@ License (GNU GPL : see "COPYING" file) : see details in "Copyright and
 Licenses" paragraph below.
 
 
-# **Example 1 : browsing**
---------------------
+## **Example 1 : browsing**
 
 (the actual files listed depend on your AV files collection ! Also, the 
 directory structure is different for each kind of Media Server)
@@ -57,8 +55,7 @@ Note: the FUSE  kernel module shall be loaded before running djmount
 "fusermount: fuse device not found, try 'modprobe fuse' first").
 
 
-# **Example 2 : searching**
----------------------
+## **Example 2 : searching**
 
 (again, the actual content listed depends on your AV files collection !)
 
@@ -100,8 +97,7 @@ included in the djmount package. This file is also available at run-time
 in the "_search" directory, if the connected UPnP device supports searching.
 
 
-# **Building and Installation**
--------------------------
+## **Building and Installation**
 
 djmount has been built and tested on various Linux distro (MandrakeLinux 10.1,
 GeeXboX, Debian sarge or sid, Ubuntu 5.10, Mandriva 2006.0 ...), which include
@@ -112,56 +108,60 @@ Different versions of FUSE are also supported (e.g. 2.2.1, 2.4, 2.5)
 
 A) Basic build instruction:
 
-1) Prerequisites for compilation:
+    1) Prerequisites for compilation:
 
-   * the FUSE package : http://fuse.sourceforge.net/ 
+    * the FUSE package : http://fuse.sourceforge.net/ 
 
-2) Use 'configure' and 'make' in the top directory to compile.
-   Example :
-	./configure
-	make
+    2.1) Use 'configure' and 'make' in the top directory to compile if using the release package.
+        Example :
+	        ./configure
+	        make
+    2.2) Use 'bootstrap', 'configure' and 'make' in the top directory to compile if using the source code: 
+        Example :
+            ./bootstrap
+            ./configure
+            make
+    
+    3) if you want to install djmount on your system, run :
+	    sudo make install
 
-3) if you want to install djmount on your system, run :
-	make install
-
-   or to strip the resulting executable :
-	make install-strip
+    or to strip the resulting executable :
+	    make install-strip
 
 
 B) Advanced build instruction:
 
-"configure" as a few options to customise djmount: see --help option.
-In particular,
+    "configure" as a few options to customise djmount: see --help option.
+    In particular,
 	
-  --disable-debug             extra debugging code [default=enabled]
-  --with-fuse-prefix=DIR      search for fuse in DIR/include and DIR/lib
-  --with-libiconv-prefix=DIR  search for libiconv in DIR/include and DIR/lib
-  --with-external-talloc      use external talloc library (not recommended)
+    --disable-debug             extra debugging code [default=enabled]
+    --with-fuse-prefix=DIR      search for fuse in DIR/include and DIR/lib
+    --with-libiconv-prefix=DIR  search for libiconv in DIR/include and DIR/lib
+    --with-external-talloc      use external talloc library (not recommended)
                               [default = use internal bundled library]
-  --with-talloc-prefix=DIR    search for talloc in DIR/include and DIR/lib
-  --with-external-libupnp     use external libupnp library (at least 1.3.1)
-                              [default = use internal bundled library]
-  --with-libupnp-prefix=DIR   search for libupnp in DIR/include and DIR/lib
+    --with-talloc-prefix=DIR    search for talloc in DIR/include and DIR/lib
+    --with-external-libupnp     use external libupnp library (at least 1.3.1)
+    [default = use internal bundled library]
+    --with-libupnp-prefix=DIR   search for libupnp in DIR/include and DIR/lib
 
-configure with also checks the following environment variables in
-case there is a custom installation (see also configure --help):
-	FUSE_CFLAGS, FUSE_LIBS, 
+    configure with also checks the following environment variables in
+    case there is a custom installation (see also configure --help):
+	    FUSE_CFLAGS, FUSE_LIBS, 
 	TALLOC_CFLAGS, TALLOC_LIBS, 
 	LIBUPNP_CFLAGS, LIBUPNP_LIBS.
 
-Examples:
-	./configure --with-external-talloc --with-talloc-prefix=/opt/local
+    Examples:
+	    ./configure --with-external-talloc --with-talloc-prefix=/opt/local
 	TALLOC_CFLAGS='-I/opt/include' ./configure --with-external-talloc
 
-Note: djmount requires the patches included in the bundled libupnp library :
-version 1.2.1a alone is not sufficient. If using an external libupnp 
-installation, it must be version 1.3.1. Version 1.4 (as available from 
-http://www.libupnp.org/ or http://sf.net/projects/pupnp/ ) has *not* 
-been tested with djmount.
+    Note: djmount requires the patches included in the bundled libupnp library :
+    version 1.2.1a alone is not sufficient. If using an external libupnp 
+    installation, it must be version 1.3.1. Version 1.4 (as available from 
+    http://www.libupnp.org/ or http://sf.net/projects/pupnp/ ) has *not* 
+    been tested with djmount.
 
 
-# **Usage** 
------
+## **Usage** 
 
 1) as root : load the FUSE kernel module
 
@@ -198,8 +198,7 @@ been tested with djmount.
    the connected device).
 
 
-# **Known Compatible Devices**
-------------------------
+## **Known Compatible Devices**
 
 djmount has been tested successfully with the following UPnP AV 
 Devices / Media Servers. Although djmount should work with other 
@@ -233,8 +232,7 @@ This page describes how to share A/V content with some of the above servers :
  http://www.geexbox.org/wiki/index.php/Accessing_to_UPnP_Contents
 
 
-# **Troubleshooting**
----------------
+## **Troubleshooting**
 
 * if djmount refuses to start, make sure that the FUSE kernel module has
   been loaded before running djmount (try 'modprobe fuse' as root).
@@ -276,8 +274,7 @@ This page describes how to share A/V content with some of the above servers :
   http://sourceforge.net/forum/?group_id=142039
 
 
-# **Implementation**
---------------
+## **Implementation**
 
 This project uses the following main libraries :
 
@@ -298,8 +295,7 @@ The UPnP AV Architecture is described here :
 http://www.upnp.org/standardizeddcps/mediaserver.asp
 
 
-# **Copyright and Licenses**
-----------------------
+## **Copyright and Licenses**
 
 djmount is free software :
 
